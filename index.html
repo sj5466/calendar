@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>송수지_달력만들기</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="calendar">
+        <div class="calendar__header">
+          <div class="date__time__value">
+            <div class="time__formate">오후 04:04:20</div>
+            <div class="date__formate">2022년 10월 1일 토요일</div>
+          </div>
+        </div>
+        <!-- //calendar__header -->
+        <div class="calendar__contents">
+          <div class="calendar__year__month">
+            <div class="year__month__click">
+              <span class="year__click">2022</span>
+              <span>년</span>
+              <span class="month__click">10월</span>
+            </div>
+            <div class="direction__btn">
+              <span id="prev">&lt;</span><span id="next">&gt;</span>
+            </div>
+          </div>
+          <div class="calendar__week">
+            <div>일</div>
+            <div>월</div>
+            <div>화</div>
+            <div>수</div>
+            <div>목</div>
+            <div>금</div>
+            <div>토</div>
+          </div>
+          <div class="calendar__days"></div>
+          <div class="month__list"></div>
+          <div class="year__list"></div>
+        </div>
+        <!-- //calendar__contents -->
+        <div class="calendar__footer">
+          <div class="today">오늘</div>
+          <form action="#">
+            <fieldset>
+              <label for="event" class="blind">이벤트 알림추가</label>
+              <input
+                type="text"
+                name="event"
+                id="event"
+                placeholder="이벤트 또는 미리 알림 추가"
+              />
+            </fieldset>
+          </form>
+          <div class="envent__notice">이벤트 없음</div>
+          <div class="hide__list">
+            <form action="#">
+              <fieldset>
+                <label for="list" class="blind">일정 목록 숨기기</label>
+                <select name="list" id="list">
+                  <option value="알림 목록 숨기기">알림 목록 숨기기</option>
+                  <option value="알림 목록 숨기기">알림 목록 숨기기</option>
+                  <option value="알림 목록 숨기기">알림 목록 숨기기</option>
+                </select>
+              </fieldset>
+            </form>
+          </div>
+          <!-- hide__list -->
+        </div>
+        <!-- //calendar__footer -->
+      </div>
+      <!-- //calendar -->
+    </div>
+    <!-- //wrapper -->
+
+    <!-- script -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>

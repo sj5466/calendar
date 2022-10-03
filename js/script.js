@@ -7,8 +7,8 @@ prevNextBtn = document.querySelectorAll(".direction__btn span");
 
 // 년,월,일,시간 데이터 가져오기
 let date = new Date(),
-currYear = date.getFullYear(),
-currMonth = date.getMonth();
+currentYear = date.getFullYear(),
+currentMonth = date.getMonth();
 
 // 시간 나타내기
 const currentDateOption ={
@@ -52,10 +52,10 @@ const years = ["2000","2001","2002","2003","2004","2005","2006","2007","2008","2
 
 // 날짜 표시
 const renderCalendar = () => {
-    let firstDayMonth = new Date(currYear, currMonth, 1).getDay(),
-    lastDateMonth = new Date(currYear, currMonth + 1, 0 ).getDate(),
-    lastDayMonth = new Date(currYear, currMonth, lastDateMonth).getDay(),
-    lastDateLastMonth = new Date(currYear, currMonth, 0).getDate();
+    let firstDayMonth = new Date(currentYear, currentMonth, 1).getDay(),
+    lastDateMonth = new Date(currentYear, currentMonth + 1, 0 ).getDate(),
+    lastDayMonth = new Date(currentYear, currentMonth, lastDateMonth).getDay(),
+    lastDateLastMonth = new Date(currentYear, currentMonth, 0).getDate();
     let liTag= "";
 
     for(let i = firstDayMonth; i > 0; i--){
@@ -63,7 +63,7 @@ const renderCalendar = () => {
     }
 
     for(let i =1; i <= lastDateMonth; i++){
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
+        let isToday = i === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear() ? "active" : "";
 
         liTag += `<div class="${isToday}">${i}</div>`;
     }
@@ -72,8 +72,8 @@ const renderCalendar = () => {
         liTag += `<div class="inactive">${i - lastDayMonth + 1} </div>`
     }
     
-    yearDate.innerText = `${currYear}`;
-    monthDate.innerText = `${months[currMonth]}`;
+    yearDate.innerText = `${currentYear}`;
+    monthDate.innerText = `${months[currentMonth]}`;
     calendarDays.innerHTML = liTag;
 }
 renderCalendar();
@@ -81,12 +81,12 @@ renderCalendar();
 // 클릭시 년,월 변경
 prevNextBtn.forEach(icon => {
     icon.addEventListener("click",()=>{
-        currMonth = icon.id === "prev" ? currMonth -1 : currMonth + 1;
+        currentMonth = icon.id === "prev" ? currentMonth -1 : currentMonth + 1;
 
-        if(currMonth < 0 || currMonth > 11){
-            date = new Date(currYear, currMonth);
-            currYear = date.getFullYear();
-            currMonth = date.getMonth();
+        if(currentMonth < 0 || currentMonth > 11){
+            date = new Date(currentYear, currentMonth);
+            currentYear = date.getFullYear();
+            currentMonth = date.getMonth();
         }else{
             date = new Date();
         }
@@ -102,8 +102,8 @@ months.forEach((e, index) =>{
 
     monthList.append(isMonth);
     isMonth.addEventListener('click',()=>{
-        currMonth = index;
-        renderCalendar(currMonth, currYear);
+        currentMonth = index;
+        renderCalendar(currentMonth, currentYear);
        
         monthList.classList.add('hide');
     });
@@ -129,12 +129,12 @@ years.forEach((e, index) =>{
     yearList.append(isYear);
     isYear.addEventListener('click',()=>{
         if(index <= 9){
-            currYear = `200${index}`;
+            currentYear = `200${index}`;
         }else{
-            currYear = `20${index}`;
+            currentYear = `20${index}`;
         }
         
-        renderCalendar(currMonth, currYear);
+        renderCalendar(currentMonth, currentYear);
 
         yearList.classList.add('hide');
     });
